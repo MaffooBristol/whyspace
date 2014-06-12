@@ -97,11 +97,11 @@ if os.path.isdir(rootDir):
   for root, subFolders, files in os.walk(rootDir):
     # Filter out all files that aren't related to modules/PHP.
     files = filter(lambda file: any(file.endswith(x) for x in ('php', 'inc', 'module', 'install', 'tpl.php')), files)
-    if filename == 'whyspace.testfile.php':
-      print 'Refusing to Whyspacify any source code!'
-      continue
     # Loop through the files
     for filename in files:
+      if filename == 'whyspace.testfile.php':
+        print 'Refusing to Whyspacify any source code!'
+        continue
       fixFile(filename, root)
 
 # Check if the input is a single file.
